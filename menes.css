@@ -1,0 +1,226 @@
+/* iPhone.css - iPhone Interface Cascading Style Sheet
+ * Copyright (C) 2007-2008  Jay Freeman (saurik)
+*/
+ 
+/*
+ *        Redistribution and use in source and binary
+ * forms, with or without modification, are permitted
+ * provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the
+ *    above copyright notice, this list of conditions
+ *    and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the
+ *    above copyright notice, this list of conditions
+ *    and the following disclaimer in the documentation
+ *    and/or other materials provided with the
+ *    distribution.
+ * 3. The name of the author may not be used to endorse
+ *    or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS''
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+ * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+ * NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR
+ * TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+ * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+ 
+* {
+    border: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /*font-family: inherit;*/
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    text-decoration: none;
+    vertical-align: baseline;
+}
+ 
+a {
+    color: inherit;
+}
+ 
+.panel {
+    position: absolute;
+    left: 50%;
+    margin-left: -160px;
+    display: block;
+    width: 320px;
+}
+ 
+body {
+    font-family: Helvetica, Arial;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    margin: 0 auto;
+    width: 320px;
+}
+ 
+body.pinstripe {
+    background: #c7ced5 url(pinstripes.png);
+}
+ 
+a {
+    color: blue;
+    text-underline-style: dotted;
+}
+ 
+strong {
+    font-weight: bold
+}
+ 
+ 
+em {
+    font-style: italic;
+}
+ 
+ 
+ 
+fieldset div hr {
+    border-top: 1px dashed #999999;
+}
+ 
+fieldset {
+    background-color: #ffffff;
+    border: 1px solid #999999;
+    -moz-border-radius: 9px;
+    -webkit-border-radius: 9px;
+    font-size: 100%;
+    margin: 8px;
+}
+ 
+ 
+.panel label.lbl {
+    display: block;
+    margin: 13px 0 -4px 24px;
+    line-height: 24px;
+    font-size: inherit;
+    font-weight: bold;
+    color: #4d4d70;
+    text-shadow: rgba(255, 255, 255, 0.75) 1px 1px 0;
+}
+ 
+div.fsd {
+    border-bottom: 1px solid #999999;
+}
+ 
+/* XXX: should be a.left:nth-last-child(2) */
+div.fsd:last-child {
+    border-bottom: 0;
+}
+ 
+a.fsa,
+div.fsd {
+    /* XXX: small differences due to font bugs */
+    padding: 12px 14px 10px 14px;
+}
+ 
+ 
+div.fsd > p {
+    margin: 10px 0;
+}
+ 
+ 
+div.fsd {
+    text-align: left;
+}
+ 
+div.fsd > p:first-child {
+    margin-top: 0;
+}
+ 
+div.fsd > p:last-child {
+    margin-bottom: 0;
+}
+ 
+a.fsa {
+    color: inherit;
+    display: block;
+}
+ 
+/* Chevrons {{{ */
+ 
+a.fsa {
+    background-repeat: no-repeat;
+    background-image: url(chevron.png);
+}
+ 
+/* Horizontal */
+ 
+ 
+a.fsa {
+    background-position: 275px center;
+}
+ 
+ 
+/* }}} */
+ 
+div.fsad {
+    display: inline-block;
+}
+ 
+ 
+div.fsad {
+    width: 221px;
+}
+ 
+ 
+div.fsad label {
+    font-weight: bold;
+}
+ 
+ 
+body.pinstripe {
+	padding:0;
+	background:#fff url(background.png) repeat-y top center;
+}
+@media screen and (max-device-width: 480px) {
+	body.pinstripe { background: #c7ced5 url(pinstripes.png); }
+	.panel { background:transparent }
+}
+ 
+a.fsa:first-child {
+    -moz-border-radius-topleft: 9px;
+    -webkit-border-top-left-radius: 9px;
+    -moz-border-radius-topright: 9px;
+    -webkit-border-top-right-radius: 9px;
+}
+ 
+a.fsa:last-child {
+    -moz-border-radius-bottomleft: 9px;
+    -webkit-border-bottom-left-radius: 9px;
+    -moz-border-radius-bottomright: 9px;
+    -webkit-border-bottom-right-radius: 9px;
+}
+ 
+a.fsa img.icon {
+    height: auto;
+    /* XXX: small differences due to font bugs */
+    margin: -7px 6px -9px -8px;
+    max-height: 29px;
+    min-width: 29px;
+    width: 29px;
+}
+ 
+ 
+div.fsd, label {
+	-webkit-user-select: none;
+}
