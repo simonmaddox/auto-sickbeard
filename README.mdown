@@ -1,0 +1,13 @@
+# Auto-SickBeard
+
+After getting fed up of having to manually create folders (and then add the show in the web UI) in order to add TV Shows to Sick Beard, I figured there had to be an easier way.
+
+So, I created this. Simply enter the name of the show you'd like to start watching, and it'll be added to Sick Beard for you.
+
+
+## To Use
+
+You'll need to change the first two lines - namely:
+
+- The path to your TV Shows directory
+- The URL to SickBeard
