@@ -1,0 +1,10 @@
+<form method="post" action="/add">
+<p>
+<select name="show" onChange="javascript:changeShow(this.options[this.selectedIndex]);">
+- results.each do |showID,showName|
+	<option value="#{showID}----#{showName}">#{showName}</option>
+end
+</select>
+</p>
+<p><input type="submit" value="Select" /></p>
+</form>
