@@ -6,31 +6,26 @@ require "uri"
 require "haml"
 require "pathname"
 require "cgi"
+require "yaml"
 
-# You can edit these
 class Settings
-  def basePath
-    '/Users/simon/Media/TV Shows' # Path to your TV Shows directory
-  end
+  attr_accessor :basePath, :sickBeard
   
-  def sickBeard
-    'http://192.168.0.100:8081' # URL to your SickBeard server
+  def initialize
+    config = YAML.load(File.open('config/config.yml'))
+    @basePath = config['basePath']
+    @sickBeard = config['sickBeard']
   end
 end
 
-# Don't edit below here
-
 class SickBeard
-  def addShows
-    '/home/addShows'
-  end
-  
-  def searchTVDB
-    "#{self.addShows}/searchTVDBForShowName?name="
-  end
-  
-  def addSingleShow
-    "#{self.addShows}/addSingleShow"
+  attr_accessor :addShows, :searchTVDB, :addSingleShow
+
+  def initialize
+    config = YAML.load(File.open('config/sickbeard.yml'))
+    @addShows = config['addShows']
+    @searchTVDB = config['searchTVDB']
+    @addSingleShow = config['addSingleShow']
   end
 end
 
@@ -62,7 +57,7 @@ post '/search' do
   sickbeard = SickBeard.new
   
   show = CGI::escape(params[:query])
-  
+    
   showList = JSON::parse(fetch("#{settings.sickBeard}#{sickbeard.searchTVDB}#{show}").body)
     
   error = ""
@@ -88,7 +83,7 @@ post '/add' do
   chosenShowName = show[1]
   
   base = Pathname.new("#{settings.basePath}")
-  raise ArgumentError, 'Base path does not exist' if !base.directory?
+  raise ArgumentError, 'Base path does not exist. Check config/config.yml' if !base.directory?
   
   pathToShow = "#{settings.basePath}/#{chosenShowName}"
     
