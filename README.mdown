@@ -7,7 +7,4 @@ So, I created this. Simply enter the name of the show you'd like to start watchi
 
 ## To Use
 
-You'll need to change the first two lines - namely:
-
-- The path to your TV Shows directory
-- The URL to SickBeard
+You'll need to edit config/config.yml to suit. basePath will need to be writable by the web server user, and sickBeard should point to a Sick Beard installation.
