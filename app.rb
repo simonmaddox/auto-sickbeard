@@ -10,11 +10,11 @@ require "cgi"
 # You can edit these
 class Settings
   def basePath
-    '/Users/simon/Media/TV Shows'
+    '/Users/simon/Media/TV Shows' # Path to your TV Shows directory
   end
   
   def sickBeard
-    'http://192.168.0.100:8081'
+    'http://192.168.0.100:8081' # URL to your SickBeard server
   end
 end
 
