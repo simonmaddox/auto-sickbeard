@@ -86,7 +86,10 @@ post '/add' do
   
   chosenShowID = show[0]
   chosenShowName = show[1]
-      
+  
+  base = Pathname.new("#{settings.basePath}")
+  raise ArgumentError, 'Base path does not exist' if !base.directory?
+  
   pathToShow = "#{settings.basePath}/#{chosenShowName}"
     
   path = Pathname.new(pathToShow)
