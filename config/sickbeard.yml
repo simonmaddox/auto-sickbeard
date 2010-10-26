@@ -1,0 +1,3 @@
+addShows: /home/addShows
+searchTVDB: /home/addShows/searchTVDBForShowName?name=
+addSingleShow: /home/addShows/addSingleShow
