@@ -85,7 +85,7 @@ post '/add' do
   added = addShow(show[0], show[1])
   
   if added then
-    "Show Added: #{show[1]}"
+    haml :success, :locals => {:show => show[1]}
   end
     
 end

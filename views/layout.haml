@@ -1,5 +1,26 @@
 %html
   %head
     %title auto-sickbeard
+
+    %style{:type => "text/css", :media => "screen"}
+      :plain
+        body {
+          font: 14px Helvetica;
+          margin: 20px auto;
+          width: 200px;
+          text-align: center;
+        }
+
+        form, div {
+          border: 2px dashed #cccccc;
+        }
+
+        input, select {
+          font: 14px Helvetica;
+          width: 150px;
+          text-align: center;
+        }
+
+
   %body
     = yield
