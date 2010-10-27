@@ -65,22 +65,34 @@ post '/search' do
   
   if showList['results'].empty? then
     error = "Show not found"
+    haml :error, :locals => {:error => error}
+  elsif showList['results'].count == 1 then
+    show = showList['results'][0]
+    added = addShow(show[0], show[1])
+    
+    if added then
+      "Show Added: #{show[1]}"
+    end
   else
     results = showList['results']
+    haml :search, :locals => {:error => error, :results => results}
   end
-  
-  haml :search, :locals => {:error => error, :results => results}
 end
 
 post '/add' do
-  settings = Settings.new
-  sickbeard = SickBeard.new
-  
   # TODO: This is really hacky. Find a better way of passing both the show ID and name
   show = params[:show].split('----')
+  added = addShow(show[0], show[1])
   
-  chosenShowID = show[0]
-  chosenShowName = show[1]
+  if added then
+    "Show Added: #{show[1]}"
+  end
+    
+end
+
+def addShow(chosenShowID, chosenShowName)
+  settings = Settings.new
+  sickbeard = SickBeard.new
   
   base = Pathname.new("#{settings.basePath}")
   raise ArgumentError, 'Base path does not exist. Check config/config.yml' if !base.directory?
@@ -97,7 +109,7 @@ post '/add' do
   response = fetch(addShowURL, {"whichSeries" => chosenShowID, "skipShow" => "0", "showToAdd" => pathToShow})
     
   case response
-    when Net::HTTPSuccess     then "Show Added: #{chosenShowName}"
+    when Net::HTTPSuccess     then true
     else
       "#{response.error!}"
   end
