@@ -1,2 +1,4 @@
 basePath: /tmp
 sickBeard: http://192.168.0.100:8081
+username: 
+password: 

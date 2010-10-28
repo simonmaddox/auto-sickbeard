@@ -9,12 +9,14 @@ require "cgi"
 require "yaml"
 
 class Settings
-  attr_accessor :basePath, :sickBeard
+  attr_accessor :basePath, :sickBeard, :username, :password
   
   def initialize
     config = YAML.load(File.open('config/config.yml'))
     @basePath = config['basePath']
     @sickBeard = config['sickBeard']
+    @username = config['username']
+    @password = config['password']
   end
 end
 
@@ -33,13 +35,27 @@ end
 def fetch(uri, postData = {}, limit = 10)
   raise ArgumentError, 'HTTP redirect too deep' if limit == 0
   
+  settings = Settings.new
+  
   uri = URI.parse(uri)
+    
+  http = Net::HTTP.new(uri.host, uri.port)  
   
   if postData.empty? then 
-    response = Net::HTTP.get_response(uri)
+    request = Net::HTTP::Get.new(uri.request_uri)
+    if !settings.username.nil? && settings.username.length > 0
+      request.basic_auth(settings.username, settings.password)
+    end
+    response = http.request(request)
   else 
-    response = Net::HTTP.post_form(uri, postData)
+    request = Net::HTTP::Post.new(uri.request_uri)
+    if !settings.username.nil? && settings.username.length > 0
+      request.basic_auth(settings.username, settings.password)
+    end
+    request.set_form_data(postData)
+    response = http.request(request)
   end
+  
   case response
     when Net::HTTPSuccess     then response
     when Net::HTTPRedirection then fetch(response['location'], {}, limit - 1)

@@ -8,3 +8,4 @@ So, I created this. Simply enter the name of the show you'd like to start watchi
 ## To Use
 
 You'll need to edit config/config.yml to suit. basePath will need to be writable by the web server user, and sickBeard should point to a Sick Beard installation.
+Username and Password should only be needed if you've turned on web authentication on Sick Beard
